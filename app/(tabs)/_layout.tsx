@@ -1,34 +1,39 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs } from "expo-router";
+import { Ionicons } from '@expo/vector-icons';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+    <Tabs 
+      screenOptions={{ 
         headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
+        tabBarActiveTintColor: '#2196F3', // Color cuando está activo
+        tabBarInactiveTintColor: 'gray',  // Color cuando está inactivo
+      }}
+    >
+      <Tabs.Screen 
+        name="HomeScreen" 
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
           ),
         }}
       />
-      <Tabs.Screen
-        name="explore"
+      <Tabs.Screen 
+        name="AboutScreen" 
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          tabBarLabel: 'About',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="information-circle" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen 
+        name="ProfileScreen" 
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
           ),
         }}
       />
